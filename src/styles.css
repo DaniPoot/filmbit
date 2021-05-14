@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-	--color-primary: #00E676;
-	--color-secondary: #263238;
-	--color-tertiary: #37474f;
-	--color-black: #000000;
-	--color-grey: #ECEFF1;
-	--color-white: #FFFFFF;
-	--color-grey-shadow: rgba(0, 0, 0, 0.25);
-	--gradient-primary: background: linear-gradient(90deg, #38F9D7 0%, #43E97B 100%);
+  --color-primary: #00e676;
+  --color-secondary: #263238;
+  --color-tertiary: #37474f;
+  --color-black: #000000;
+  --color-grey: #eceff1;
+  --color-white: #ffffff;
+  --color-grey-shadow: rgba(0, 0, 0, 0.25);
+  --gradient-primary: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
 }
 
 *,
