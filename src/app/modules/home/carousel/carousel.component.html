@@ -1,0 +1,17 @@
+<ngb-carousel *ngIf="movies">
+    <ng-template ngbSlide *ngFor="let movie of movies">
+      <div class="banner">
+        <img class="image-backdrop" [src]="'https://image.tmdb.org/t/p/w1280'+movie.backdrop" alt="Movie backdrop">
+        <img class="image-poster" [src]="'https://image.tmdb.org/t/p/w780'+movie.poster" alt="Movie poster">
+        <div class="filter-left"></div>
+        <div class="filter-bottom"></div>
+        <div class="banner-info">
+          <h1 class="movie-title">{{movie.title}}</h1>
+          <div class="banner-options">
+              <button class="btn btn-more" (click)="seeDetails(movie.id)" >Ver más</button>
+              <button class="btn btn-add" (click)="addFavorites(movie.id)">Añadir a favoritos</button>
+          </div>    
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>

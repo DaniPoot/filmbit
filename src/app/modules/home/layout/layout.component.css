@@ -1,0 +1,51 @@
+.inner {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position:relative;
+  }
+
+  img{
+      min-width: 100%;
+      height: 100%;
+  }
+  
+  .images-wrapper {
+    display: flex;
+    align-items: center;
+    animation: slideToLeft 10s ease infinite 1s;
+  }
+  img:first-child {
+    z-index:-1;
+    animation: image-change 10s ease infinite 1s;
+  }
+  
+  @keyframes image-change {
+   0%,50% {
+      transform: translateX(0%);
+    }
+    70%,100% {
+      transform: translateX(300%);
+    }
+  }
+  
+  @keyframes slideToLeft {
+    0%,
+    10% {
+      transform: translateX(0);
+    }
+    15%,
+    45% {
+      transform: translateX(-100%);
+    }
+    50%,
+    80% {
+      transform: translateX(-200%);
+    }
+    85%,
+    100% {
+      transform: translateX(-300%);
+    }
+  }
+  
+  
