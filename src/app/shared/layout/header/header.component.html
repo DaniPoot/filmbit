@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="navbar__all disabled" #searchMobile>
+
+  <a class="header__link-logo" href="#">
+    <img
+      class="header__logo"
+      src="assets/images/logo-primary-complete.svg"
+      alt="Logo"
+    />
+  </a>
+  <div class="search-bar" #searchMobile>
+    <input #input class="search-bar__input" type="text" name="movie" id="movie" />
+    <label class="search-bar__label" for="movie">
+      <svg class="feather search-bar__icon">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#search"/>
+      </svg>
+    </label>
+  </div>
+  <a class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  </div>
+
+  <div class="navbar__min">
+    <a class="header__link-logo" href="#">
+    <img
+      class="header__logo"
+      src="assets/images/logo-primary-short.svg"
+      alt="Logo"
+    />
+    </a>
+    <a href="#" (click)="activeBar()">
+      <svg class="feather search-bar__icon">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#search"/>
+      </svg>
+    </a>
+    <a href="#">
+      <svg class="feather search-bar__icon">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#user"/>
+      </svg>
+    </a>
+  </div>
+  
+</nav>
