@@ -66,17 +66,17 @@
   align-items: center;
   justify-content: center;
   margin-right: 15px;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.footer__icon svg{
+  width: 30px;
+  height: 30px;
 }
 
 .footer__icon:last-child {
   margin-right: 0;
-}
-
-.footer__icon * {
-  background-image: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 @media only screen and (min-width: 450px) {
