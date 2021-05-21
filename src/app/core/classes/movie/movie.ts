@@ -1,47 +1,47 @@
 export class Movie {
 
-    private _id: number;
-    private _title: string;
-    private _backdrop: string;
-    private _poster: string;
+    private id: number;
+    private title: string;
+    private backdrop_path: string;
+    private poster_path: string;
 
     constructor(id: number, title: string, backdrop: string, poster: string){
-        this._id = id;
-        this._title = title;
-        this._backdrop = backdrop;
-        this._poster= poster;
+        this.id = id;
+        this.title = title;
+        this.backdrop_path = backdrop;
+        this.poster_path = poster;
     }
 
-    set id(id: number){
-        this._id = id;
+    set setId(id: number){
+        this.id = id;
     }
 
-    get id(): number{
-        return this._id;
+    get getId(): number{
+        return this.id;
     }
 
-    set title(title: string){
-        this._title = title;
+    set setTitle(title: string){
+        this.title = title;
     }
 
-    get title(): string{
-        return this._title;
+    get getTitle(): string{
+        return this.title;
     }
 
     set backdrop(backdrop: string){
-        this._backdrop = backdrop;
+        this.backdrop_path = backdrop;
     }
 
     get backdrop(): string{
-        return this._backdrop
+        return this.backdrop_path;
     }
 
     set poster(poster: string){
-        this._poster = poster;
+        this.poster_path = poster;
     }
 
     get poster(): string{
-        return this._poster
+        return this.poster_path;
     }
 
 }
