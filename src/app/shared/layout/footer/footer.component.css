@@ -19,6 +19,17 @@
   width: 100%;
 }
 
+.footer__login{
+  border-bottom: 5px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient-primary);
+}
+
+.footer__login-link{
+  color: currentColor;
+  text-decoration: none;
+}
+
 .footer__content-title {
   font-size: 22px;
   font-weight: 500;
@@ -55,6 +66,7 @@
 
 .footer__icons {
   color: var(--color-primary);
+  margin-top: 10px;
 }
 
 .footer__icon {
