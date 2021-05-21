@@ -1,0 +1,27 @@
+<div *ngIf="genres">
+    <div class="genre-card" *ngFor="let genre of genres">
+        <button class="navigator-left" (click)="changeGenrePage(-1, genre.id)">
+            <img class="arrow" src="../../../../assets/images/icons/chevron-left.svg" alt="left">
+        </button>
+        <button class="navigator-right" (click)="changeGenrePage(1, genre.id)">
+            <img class="arrow" src="../../../../assets/images/icons/chevron-right.svg" alt="right">
+        </button>
+        <h2 class="genre-name">{{genre.name}}</h2>
+        <div class="genre-movies">  
+            <div class="genre-movie" *ngFor="let movie of movies">
+                <img class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+movie.poster" alt="Movie poster">
+                <div class="hover-filter">
+                    <p class="movie-title">{{movie.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-navigator">
+        <button [attr.disabled]="currentPage<=1? true : null" (click)="changePage(-1)" class="navigator-left">
+            <img class="arrow" src="../../../../assets/images/icons/chevron-left.svg" alt="left">
+        </button>
+        <button [attr.disabled]="currentPage>=(allGenres.length/3)-1? true : null" (click)="changePage(1)" class="navigator-right">
+            <img class="arrow"  src="../../../../assets/images/icons/chevron-right.svg" alt="right">
+        </button>
+    </div>
+</div>

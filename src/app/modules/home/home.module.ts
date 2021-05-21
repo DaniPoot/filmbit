@@ -4,6 +4,7 @@ import { HomeRoutingModule } from './home.routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GenresListComponent } from './genres-list/genres-list.component';
 
 
 
@@ -11,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     LayoutComponent,
     CarouselComponent,
+    GenresListComponent,
   ],
   imports: [
     CommonModule,

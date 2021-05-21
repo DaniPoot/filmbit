@@ -1,0 +1,168 @@
+.genre-card{
+    margin: 15px 60px;
+    background-color: var(--color-tertiary);
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 
+        0px 3px 6px rgba(0, 0, 0, 0.16), 
+        0px 3px 26px rgba(0, 0, 0, 0.23);
+}
+
+.genre-name{
+    font: var(--text-subtitle);
+    position: absolute;
+    margin-left: 40px;
+    padding-top: 30px;
+    letter-spacing: 0.05em;
+    z-index: 4;
+}
+
+.navigator-left, .navigator-right{
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.navigator-left:disabled, .navigator-right:disabled{
+    visibility: hidden;
+}
+
+.navigator-left{
+    background: linear-gradient(270deg, rgba(38, 50, 56, 0) 0%, #263238 100%);
+}
+
+
+.navigator-right{
+    background: linear-gradient(270deg, #263238 0%, rgba(38, 50, 56, 0) 100%);
+}
+
+.arrow{
+    height: 90px;
+    cursor: pointer;
+}
+
+.navigator-right{
+    right: 0;
+}
+
+
+.genre-movies{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    justify-content: center;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 25px;
+}
+
+.genre-movie{
+    width: 160px;
+    height: 240px;
+    position: relative;
+    margin:  5px;
+}
+
+.movie-poster, .hover-filter{
+    width: 100%;
+    max-height: 100%;
+    position: absolute;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.movie-poster{
+    z-index: 1;
+    object-fit: cover;
+}
+
+.movie-poster:hover{
+    z-index: 0;
+}
+
+.hover-filter{
+    z-index: 0;
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: rgba(55, 71, 79, 0.75);
+}
+
+.hover-filter:hover{
+    z-index: 1;
+}
+
+.page-navigator{
+    position: relative;
+    width: 15%;
+    margin: 100px auto;
+    background: none;
+    
+}
+
+@media (max-width: 1199.98px) { 
+    .genre-movies{
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+
+@media (max-width: 991.98px) { 
+    .genre-movies{
+        grid-template-columns: auto auto auto auto;
+    }
+    
+    .genre-movie{
+        width: 126px;
+        height: 190px;
+    }
+    
+    .page-navigator{
+        width: 30%;
+    }
+}
+
+
+@media (max-width: 767.98px) { 
+
+    .genre-card{
+        margin: 15px 10px;
+    }
+    
+    .genre-movies{
+        grid-template-columns: auto auto auto;
+    }
+
+    .genre-movie{
+        width: 140px;
+        height: 210px;
+    }
+    .page-navigator{
+        width: 50%;
+    }
+    
+}
+
+
+@media (max-width: 575.98px) {
+    .genre-name{
+        font: var(--text-mobile-subtitle);
+    }
+
+    .genre-movies{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    .genre-movie{
+        width: 110px;
+        height: 165px;
+        margin: 3px;
+    }
+}
