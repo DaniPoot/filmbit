@@ -6,32 +6,47 @@
       alt="Footer logo"
     />
   </a>
-  <div class="footer__content">
-    <h2 class="footer__content-title">Cuenta</h2>
-    <ul class="user-list">
-      <li class="user-list__item">
-        <a class="user-list__link" href="#">Ver perfil</a>
-      </li>
-      <li class="user-list__item">
-        <a class="user-list__link" href="#">Ver Lista de favoritos</a>
-      </li>
-      <li class="user-list__item">
-        <a class="user-list__link" href="#">Cerrar Sesion</a>
-      </li>
-    </ul>
+  <div class="footer__login" *ngIf="!isLogged; else elseBlock">
+    <a class="footer__login-link" href="#">
+      <h2 class="footer__content-title">Inicio de sesion</h2>
+    </a>
   </div>
+  <ng-template #elseBlock>
+    <div class="footer__content" >
+      <h2 class="footer__content-title">Cuenta</h2>
+      <ul class="user-list">
+        <li class="user-list__item">
+          <a class="user-list__link" href="#">Ver perfil</a>
+        </li>
+        <li class="user-list__item">
+          <a class="user-list__link" href="#">Ver Lista de favoritos</a>
+        </li>
+        <li class="user-list__item">
+          <a class="user-list__link" href="#">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
   <div class="footer__icons">
     <a class="footer__icon" href="#">
-      <img src="assets/images/icons/facebook.svg" alt="facebook logo" />
+      <svg class="feather">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#facebook"/>
+      </svg>
     </a>
     <a class="footer__icon" href="#">
-      <img src="assets/images/icons/instagram.svg" alt="instagram logo" />
+      <svg class="feather">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#instagram"/>
+      </svg>
     </a>
     <a class="footer__icon" href="#">
-      <img src="assets/images/icons/github.svg" alt="github logo" />
+      <svg class="feather">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#github"/>
+      </svg>
     </a>
     <a class="footer__icon" href="#">
-      <img src="assets/images/icons/figma.svg" alt="figma logo" />
+      <svg class="feather">
+        <use xlink:href="assets/images/icons/feather-sprite.svg#figma"/>
+      </svg>
     </a>
   </div>
 </footer>

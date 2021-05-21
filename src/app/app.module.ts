@@ -5,10 +5,13 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { FindModule } from './modules/find/find.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent, FooterComponent } from './shared/index';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

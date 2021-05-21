@@ -19,6 +19,17 @@
   width: 100%;
 }
 
+.footer__login{
+  border-bottom: 5px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient-primary);
+}
+
+.footer__login-link{
+  color: currentColor;
+  text-decoration: none;
+}
+
 .footer__content-title {
   font-size: 22px;
   font-weight: 500;
@@ -55,6 +66,7 @@
 
 .footer__icons {
   color: var(--color-primary);
+  margin-top: 10px;
 }
 
 .footer__icon {
@@ -66,24 +78,24 @@
   align-items: center;
   justify-content: center;
   margin-right: 15px;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.footer__icon svg{
+  width: 30px;
+  height: 30px;
 }
 
 .footer__icon:last-child {
   margin-right: 0;
 }
 
-.footer__icon * {
-  background-image: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 @media only screen and (min-width: 450px) {
   .footer {
     flex-direction: row;
     align-items: flex-start;
-    padding: 16px 0px 10px 0px;
+    padding: 16px 0px 100px 0px;
     justify-content: space-around;
   }
 

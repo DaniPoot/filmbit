@@ -49,7 +49,11 @@ body{
   background-color: var(--color-tertiary)!important;
 }
 
-
 .carousel-indicators .active{
   background-color: var(--color-primary)!important;
+}
+
+.feather {
+  stroke: currentColor;
+  fill: none;
 }

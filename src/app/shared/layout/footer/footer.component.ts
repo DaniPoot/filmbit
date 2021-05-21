@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  isLogged: Boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.isLogged = Boolean(localStorage.getItem('isLogged'));
   }
 
 }

@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GenresListComponent } from './genres-list/genres-list.component';
 
 
-
 @NgModule({
   declarations: [
     LayoutComponent,
