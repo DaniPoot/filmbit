@@ -16,7 +16,19 @@
       </svg>
     </label>
   </div>
-  <a class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  <a *ngIf="!isLogged; else elseBlock" class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  <ng-template #elseBlock>
+  <div class="profile m-rigth-big">
+    <svg class="feather profile__icon" (click)="activeMenu()">
+      <use xlink:href="assets/images/icons/feather-sprite.svg#user"/>
+    </svg>
+    <div class="profile__menu profile__menu--visible" #profileMenu>
+      <a href="#" class="profile__link">Favoritos</a>
+      <a href="#" class="profile__link">Configuracion</a>
+      <a href="#" class="profile__link">Salir</a>
+    </div>
+  </div>
+  </ng-template>
   </div>
 
   <div class="navbar__min">
