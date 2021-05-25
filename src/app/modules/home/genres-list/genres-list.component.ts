@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Genre } from '../Genre';
-import { Movie } from '../Movie';
-
+import { Genre } from '../../../core/classes/genre/genre';
+import { Movie } from '../../../core/classes/movie/movie';
+import { GenresService } from '../../../core/services/genres/genres.service';
+import { MovieService } from 'src/app/core/services/movie/movie.service';
 @Component({
   selector: 'app-genres-list',
   templateUrl: './genres-list.component.html',
@@ -9,45 +10,66 @@ import { Movie } from '../Movie';
 })
 
 export class GenresListComponent implements OnInit {
+ 
+  genres: Genre[]=[];
+  currentGenres: Genre[]=[];
+  listedGenres: Genre[]=[];
 
   pages: Map<number, Genre>=new Map();
-  currentPage: number=0;
-  genres: Array<Genre>=[];
-  allGenres: Array<Genre>=[{"id":28,"name":"Acción"},{"id":12,"name":"Aventura"},{"id":16,"name":"Animación"},{"id":35,"name":"Comedia"},{"id":80,"name":"Crimen"},{"id":99,"name":"Documental"},{"id":18,"name":"Drama"},{"id":10751,"name":"Familia"},{"id":14,"name":"Fantasía"},{"id":36,"name":"Historia"},{"id":27,"name":"Terror"},{"id":10402,"name":"Música"},{"id":9648,"name":"Misterio"},{"id":10749,"name":"Romance"},{"id":878,"name":"Ciencia ficción"},{"id":10770,"name":"Película de TV"},{"id":53,"name":"Suspense"},{"id":10752,"name":"Bélica"},{"id":37,"name":"Western"}];
-  movies: Array<Movie> = [
-    {title:"Mortal Kombat", id: 1, backdrop: "/6ELCZlTA5lGUops70hKdB83WJxH.jpg", poster: "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg"},
-    {title:"Vanquish", id: 2, backdrop: "/mYM8x2Atv4MaLulaV0KVJWI1Djv.jpg", poster: "/AoWY1gkcNzabh229Icboa1Ff0BM.jpg"},
-    {title:"Godzilla vs. Kong", id: 3, backdrop: "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg", poster: "/yJTk4eqQd9Yo5REpFbTSOMkbSgn.jpg"},
-    {title:"Nadie", id: 4, backdrop: "/6zbKgwgaaCyyBXE4Sun4oWQfQmi.jpg", poster: "/ddO5a3tMPpQutSDQO1bESgLWadB.jpg"},
-    {title:"Ruega por nosotros", id: 5, backdrop: "/lkInRiMtLgl9u9xE0By5hqf66K8.jpg", poster: "/hPoOn553ARmSQl0ChKTlGDvYq9x.jpg"},
-    {title:"Mortal Kombat", id: 1, backdrop: "/6ELCZlTA5lGUops70hKdB83WJxH.jpg", poster: "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg"},
-    {title:"Vanquish", id: 2, backdrop: "/mYM8x2Atv4MaLulaV0KVJWI1Djv.jpg", poster: "/AoWY1gkcNzabh229Icboa1Ff0BM.jpg"},
-    {title:"Godzilla vs. Kong", id: 3, backdrop: "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg", poster: "/yJTk4eqQd9Yo5REpFbTSOMkbSgn.jpg"},
-    {title:"Nadie", id: 4, backdrop: "/6zbKgwgaaCyyBXE4Sun4oWQfQmi.jpg", poster: "/ddO5a3tMPpQutSDQO1bESgLWadB.jpg"},
-    {title:"Ruega por nosotros", id: 5, backdrop: "/lkInRiMtLgl9u9xE0By5hqf66K8.jpg", poster: "/hPoOn553ARmSQl0ChKTlGDvYq9x.jpg"},
-    {title:"Nadie", id: 4, backdrop: "/6zbKgwgaaCyyBXE4Sun4oWQfQmi.jpg", poster: "/ddO5a3tMPpQutSDQO1bESgLWadB.jpg"},
-    {title:"Ruega por nosotros", id: 5, backdrop: "/lkInRiMtLgl9u9xE0By5hqf66K8.jpg", poster: "/hPoOn553ARmSQl0ChKTlGDvYq9x.jpg"},
-  ]
+  currentPage: number=-1;
 
-  constructor() { }
+  constructor(private genreService: GenresService, 
+              private movieService: MovieService) { 
 
-  ngOnInit(): void {
-    this.changePage(1);
   }
 
+  ngOnInit(): void { 
+    this.updateGenres();
+  }
+
+  updateGenres(){
+    this.genreService.getGenres().then(
+      response => {
+        this.genres = response.genres as Genre[];
+        this.getGenres(1)
+        
+      }, error => {
+        console.error(error);
+    })
+  }
+  
   /** pageNavigation values: 1 (nextPage), -1(pastPage) */
-  changePage(pageNavigation: number){
-    this.currentPage+= pageNavigation;
-    if(this.currentPage>0 && this.currentPage< this.allGenres.length/3){
-      this.genres = this.allGenres.filter(
-        (genre, index)=> (index >= (this.currentPage*3)-2)&&(index <= (this.currentPage*3)) 
-      );
-      window.scrollTo(0, 0);
+  getGenres(pageNavigation: number){
+    this.currentPage+=pageNavigation;
+    window.scrollTo(0, 0);
+    this.currentGenres = this.listedGenres.slice(this.currentPage*3, (this.currentPage*3)+3);
+    
+    if(this.currentGenres.length==0){
+      for(let i=0; i<3 && this.listedGenres.length!==this.genres.length; i++ ){
+        let newGenre = this.genres[(Math.floor(Math.random() * this.genres.length))];
+        while(this.listedGenres.some(genre => genre.id === newGenre.id)){
+          newGenre= this.genres[(Math.floor(Math.random() * this.genres.length))];
+        }
+        this.listedGenres.push(newGenre);
+        this.currentGenres.push(newGenre);
+        this.getMoviesByGenre(newGenre);
+      }
     }
   }
 
-  changeGenrePage(pageGenreNavigation: number, genreId: number){
-    alert(pageGenreNavigation+" genre: "+ genreId);
+  getMoviesByGenre(genre: Genre){
+    if( genre.page === undefined ) genre.page = 1;
+    this.movieService.getByGenre(genre.page, genre.id, "popularity.desc").then(
+      response =>{
+        genre.movies=(response.results as Movie[]).splice(0,12);
+      },
+      error => console.error(error)
+    )
+  }
+
+  changeGenrePage(pageGenreNavigation: number, genre: Genre){
+    genre.page+= pageGenreNavigation;
+    this.getMoviesByGenre(genre);
   }
 
 }

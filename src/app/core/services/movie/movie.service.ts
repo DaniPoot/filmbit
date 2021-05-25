@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { MovieResponse } from '../../classes/movie/movie-response';
 
 const enum endpoint{
   callback = '&callback=JSONP_CALLBACK',
@@ -8,6 +9,7 @@ const enum endpoint{
   by_genre ='/discover/movie',
   with_genre = '&with_genres=',
   language ='&language=es',
+  sort_by = '&sort_by=',
   page = '&page='
 }
 
@@ -25,14 +27,26 @@ export class MovieService {
   }
 
   getNewest(){
-    const url = this.URL + endpoint.now_playing + this.api_key + endpoint.language + endpoint.callback;
-    let movies = this.http.jsonp(url, "");
-    return movies.pipe(map((data: any) => data.results));
+      return this.getMovies(this.URL + endpoint.now_playing + this.api_key 
+                            + endpoint.language);
   }
 
-  getByGenre(page: number, genre: number){
-    const url = this.URL + endpoint.by_genre + this.api_key + endpoint.language + endpoint.page + page.toString() + endpoint.with_genre + genre.toString() + endpoint.callback;
-    let movies = this.http.jsonp(url, "");
-    return movies.pipe(map((data: any) => data.results));
+  getByGenre(page: number, genre: number, sortBy: string){
+    return this.getMovies(this.URL + endpoint.by_genre + this.api_key 
+                          + endpoint.language + endpoint.sort_by+ sortBy 
+                          + endpoint.page + page.toString() 
+                          + endpoint.with_genre + genre.toString())
+  }
+
+  private getMovies(url: string){
+    return new Promise<MovieResponse>((resolve, reject) => {
+      this.http.get(url)
+      .toPromise()
+      .then( (response) => {
+        resolve(response as MovieResponse)
+      }, (error) => {
+        reject(error);
+      })
+    })
   }
 }

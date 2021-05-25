@@ -1,28 +1,16 @@
+import { Movie } from '../movie/movie';
+
 export class Genre {
 
-    private _id: number;
-    private _name: string;
+    id: number;
+    name: string;
+    page: number= 1;
+    movies: Movie[];
  
     constructor(id: number, name: string){
-        this._id = id;
-        this._name = name;
-    }
-
-    set id(id: number){
-        this._id = id;
-    }
-
-    get id(): number{
-        return this._id;
-
-    }
-
-    set name(name: string){
-        this._name = name;
-    }
-
-    get name(): string{
-        return this._name;
+        this.id = id;
+        this.name = name;
+        this.movies = [];
     }
     
 }
