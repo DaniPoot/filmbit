@@ -1,0 +1,25 @@
+<input type="text" [(ngModel)]="query" (keyup)="onKeyupEvent($event)" style="margin-top:100px">
+
+<div class="container-grid" *ngIf="query.length==0">
+    <div class="genre" *ngFor="let genre of genres">
+        <div class="name-container">
+            <p class="genre-name">{{genre.name}}</p>
+        </div>
+        <img class="genre-bg" [src]="'../../../../assets/images/genres/bg-genre-'+genre.id+'.svg'" alt="" >
+    </div>
+</div>
+
+<div class="container-grid" *ngIf="movies.length>0; else elseBlock">
+    <div class="genre-movie" *ngFor="let movie of movies">
+        <img *ngIf="movie.poster_path" class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+movie.poster_path" alt="">
+        <div class="hover-filter">
+            <p class="movie-title">{{movie.title}}</p>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <div *ngIf="query.length>=3" class="no-results">
+        <img class="no-results-image" src="../../../../assets/images/no-results.svg">
+    </div>
+</ng-template>

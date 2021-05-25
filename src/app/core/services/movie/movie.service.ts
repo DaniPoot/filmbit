@@ -8,7 +8,7 @@ const enum endpoint{
   now_playing = '/movie/now_playing',
   by_genre ='/discover/movie',
   with_genre = '&with_genres=',
-  language ='&language=es',
+  language ='&language=la',
   sort_by = '&sort_by=',
   page = '&page='
 }
