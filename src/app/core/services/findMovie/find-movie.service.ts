@@ -5,7 +5,7 @@ import { MovieResponse } from '../../classes/movie/movie-response';
 
 
 const enum endpoint{
-  language ='&language=la',
+  language ='&language=es-la',
   movie = '/search/movie',
   query = '&query=',
   page = '&page=1',
