@@ -33,6 +33,7 @@ export class MoviesFoundComponent implements OnInit {
   }
 
   onKeyupEvent(value: string){
+    this.query= value;
     if(value.length >= 3){
       this.findMovieService.findMovie(value).then(
         response => { this.movies = response.results as Movie[]

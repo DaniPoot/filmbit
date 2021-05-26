@@ -1,4 +1,4 @@
-<div class="container-grid" *ngIf="query.length==0">
+<div class="container-grid" *ngIf="query.length<3">
     <div class="genre" *ngFor="let genre of genres">
         <div class="name-container">
             <p class="genre-name">{{genre.name}}</p>
