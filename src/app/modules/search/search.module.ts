@@ -13,6 +13,9 @@ import { MoviesFoundComponent } from './movies-found/movies-found.component';
     CommonModule,
     SearchRoutingModule,
     FormsModule
+  ],
+  exports: [
+    MoviesFoundComponent
   ]
 })
 export class SearchModule { }

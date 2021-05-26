@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {SearchMoviesService} from 'src/app/core/services/shearchMovies/search-movies.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isLogged: Boolean = false;
 
 
-  constructor(private render: Renderer2) { }
+  constructor(private render: Renderer2, public search: SearchMoviesService) { }
 
   ngOnInit(): void {
     this.isLogged = Boolean(localStorage.getItem('isLogged'));
@@ -44,6 +45,16 @@ export class HeaderComponent implements OnInit {
     }
     this.isMenuEnable = !this.isMenuEnable
 
+  }
+
+  onUserType(){
+    const input = this.input?.nativeElement;
+    if(input.value != ''){
+      this.search.query$.emit(input.value)
+      this.render.addClass(input, 'search-bar__input--active')
+    }else{
+      this.render.removeClass(input, 'search-bar__input--active')
+    }
   }
 
 }
