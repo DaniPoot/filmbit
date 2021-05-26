@@ -114,12 +114,11 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  left: 50%;
+  width: 200px;
   transform: translate(-50%, 0);
   background-color: var(--color-white);
-  text-align: center;
-  transition: all 2s;
-  border-radius: 3px;
+  transition: all 0.5s;
+  border-radius: 10px;
 }
 
 .profile__menu--visible {
@@ -129,14 +128,14 @@
 }
 
 .profile__link {
-  color: var(--color-secondary);
+  color: var(--color-white);
+  background-color: var(--color-tertiary);
   text-decoration: none;
-  padding: 6px 10px;
+  padding: 15px 20px;
 }
 
 .profile__link:hover {
   background-color: var(--color-secondary);
-  color: var(--color-white);
 }
 
 @media only screen and (max-width: 576px) {
