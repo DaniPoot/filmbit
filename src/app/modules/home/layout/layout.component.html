@@ -1,2 +1,8 @@
-<app-carousel></app-carousel>
-<app-genres-list></app-genres-list>
+<div *ngIf="!userIsSearch; else elseBlock">
+  <app-carousel></app-carousel>
+  <app-genres-list></app-genres-list>
+</div>
+
+<ng-template #elseBlock>
+  <app-movies-found></app-movies-found>
+</ng-template>
