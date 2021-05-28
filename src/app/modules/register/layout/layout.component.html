@@ -1,0 +1,59 @@
+<div class="body">
+
+    <div class="container">
+        <div class="img-container row pt-3">
+            <img src="../../../../assets/images/logo-secondary-complete.svg" alt="">  
+        </div>
+
+
+
+        <form class="form mt-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group row ml-3 mr-3">
+                <label>Nombre de usuario</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Nombre de usuario requerido</div>
+                </div>
+            </div>
+            
+            <div class="form-group row ml-3 mr-3">
+                <label>Correo electrónico</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Correo electrónico requerido</div>
+                    <div *ngIf="f.email.errors.email">El correo electrónico es inválido</div>
+                </div>
+            </div>
+            <div class="form-group row ml-3 mr-3">
+                <label>Contraseña</label>
+                <input type="password" formControlName="password" class="form-control" 
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Contraseña requerida</div>
+                    <div *ngIf="f.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
+                </div>
+            </div>
+
+            <div class="form-group row ml-3 mr-3">
+                <label>Confirmar contraseña</label>
+                <input type="password" formControlName="confirmedPassword" class="form-control" 
+                [ngClass]="{ 'is-invalid': submitted && f.confirmedPassword.errors }" />
+                <div *ngIf="submitted && f.confirmedPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmedPassword.errors.required">Confirmación de contraseña requerida</div>
+                </div>
+                <div class="text-danger" *ngIf="registerForm.hasError('notSame')">Las contraseñas no coinciden</div>
+            </div>
+
+            <div class="row submit-group ml-3 mr-3">
+                <button type="submit" class="btn btn-primary btn-login col-12" >Crear cuenta</button>
+            </div>
+            <div class="row register">
+                <small id="emailHelp" class="form-text text-muted col-md-6 col-lg-6 col-sm-12 text-center">¿Ya tienes cuenta?</small>
+                <a type="submit" class="btn btn-outline col-md-6 col-lg-6 col-sm-12 text-center" href="/login">Inicia sesión aquí</a>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
