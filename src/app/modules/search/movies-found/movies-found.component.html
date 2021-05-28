@@ -1,9 +1,11 @@
 <div class="container-grid" *ngIf="query.length==0">
     <div class="genre" *ngFor="let genre of genres">
+        <a [href]="'/genres/' + genre.id" class="genre__link">
         <div class="name-container">
             <p class="genre-name">{{genre.name}}</p>
         </div>
         <img class="genre-bg" [src]="'../../../../assets/images/genres/bg-genre-'+genre.id+'.svg'" alt="" >
+        </a>
     </div>
 </div>
 
@@ -17,7 +19,12 @@
 </div>
 
 <ng-template #elseBlock>
-    <div *ngIf="query.length>=3" class="no-results">
+    <div *ngIf="query.length>=3; else emptyBlock" class="no-results">
         <img class="no-results-image" src="../../../../assets/images/no-results.svg">
     </div>
+    <ng-template #emptyBlock>
+        <div *ngIf="query.length>=1" class="empty">
+            Ingresa mas caracteres
+        </div>
+    </ng-template>
 </ng-template>
