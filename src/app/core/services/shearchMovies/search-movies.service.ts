@@ -6,6 +6,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class SearchMoviesService {
 
   query$ = new EventEmitter<string>()
+  isSearching$ = new EventEmitter<boolean>()
 
   constructor() { }
 }

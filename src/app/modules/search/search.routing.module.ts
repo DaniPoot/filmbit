@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MoviesFoundComponent } from './movies-found/movies-found.component';
+import { GenresListComponent } from '../genres/genres-list/genres-list.component';
  
 const routes: Routes = [
-  {   path: 'search',   component: MoviesFoundComponent,
+  {   
+    path: 'genres/:id',   component: GenresListComponent,
   },
 ];
 
