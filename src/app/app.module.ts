@@ -7,12 +7,11 @@ import { HomeModule } from './modules/home/home.module';
 import { SearchModule } from './modules/search/search.module';
 import { DetailsModule } from './modules/details/details.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeaderComponent, FooterComponent } from './shared/index';
+import { FooterComponent } from './shared/index';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
   ],
   imports: [
