@@ -3,10 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { MoviesFoundComponent } from './movies-found/movies-found.component';
  
 const routes: Routes = [
-  {   path: 'find',   component: MoviesFoundComponent,
+  {   path: 'search',   component: MoviesFoundComponent,
   },
 ];
- 
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
@@ -14,4 +13,4 @@ const routes: Routes = [
 })
 
 
-export class FindRoutingModule { }
+export class SearchRoutingModule { }

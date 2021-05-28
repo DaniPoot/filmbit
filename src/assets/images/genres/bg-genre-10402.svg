@@ -1,0 +1,21 @@
+<svg width="450" height="150" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.5" width="450" height="150" rx="16" fill="url(#paint0_linear)"/>
+<g opacity="0.5" filter="url(#filter0_d)">
+<path d="M421.999 5.73383C421.998 4.84003 421.787 3.95873 421.383 3.1602C420.978 2.36166 420.392 1.66797 419.669 1.13443C418.947 0.600891 418.109 0.242251 417.223 0.0871033C416.336 -0.0680442 415.425 -0.0154072 414.563 0.240816L337.504 23.1921C336.313 23.5459 335.269 24.2713 334.526 25.2608C333.784 26.2503 333.382 27.4511 333.381 28.6851V104.248C328.382 100.793 322.353 99.1195 316.273 99.5C310.194 99.8806 304.424 102.293 299.902 106.344C295.38 110.396 292.372 115.847 291.369 121.812C290.365 127.777 291.425 133.903 294.375 139.193C297.326 144.484 301.993 148.627 307.617 150.949C313.242 153.27 319.492 153.633 325.351 151.978C331.21 150.323 336.331 146.748 339.883 141.835C343.434 136.922 345.206 130.96 344.909 124.92C344.93 124.719 344.94 124.517 344.94 124.316V63.5558L410.44 44.0472V88.9553C405.441 85.4999 399.411 83.8263 393.332 84.2068C387.253 84.5873 381.483 86.9996 376.961 91.0509C372.439 95.1023 369.431 100.554 368.427 106.519C367.424 112.483 368.484 118.61 371.434 123.9C374.384 129.191 379.052 133.334 384.676 135.655C390.301 137.977 396.551 138.34 402.41 136.685C408.268 135.03 413.39 131.455 416.942 126.542C420.493 121.629 422.265 115.667 421.968 109.627C421.989 109.423 421.999 109.219 421.999 109.015V5.73383Z" fill="#263238"/>
+</g>
+<defs>
+<filter id="filter0_d" x="287" y="0" width="139" height="161" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="0" y1="75" x2="450" y2="75" gradientUnits="userSpaceOnUse">
+<stop stop-color="#38F9D7"/>
+<stop offset="1" stop-color="#43E97B"/>
+</linearGradient>
+</defs>
+</svg>

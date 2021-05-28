@@ -10,6 +10,8 @@
   --gradient-primary: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
   --text-title: normal bold 86px 'Montserrat', sans-serif;
   --text-subtitle: normal bold 28px/34px 'Montserrat', sans-serif;  
+  --text-movie-hover: normal bold 20px/28px 'Montserrat', sans-serif;  
+  --text-mobile-title: normal bold 38px'Montserrat', sans-serif;  
   --text-mobile-subtitle: normal bold 14px/17px 'Montserrat', sans-serif;  
 }
 

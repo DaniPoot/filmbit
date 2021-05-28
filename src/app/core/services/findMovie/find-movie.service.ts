@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Movie } from '../../classes/movie/movie';
+import { MovieResponse } from '../../classes/movie/movie-response';
+
 
 const enum endpoint{
-  callback = '&callback=JSONP_CALLBACK',
-  language ='&language=es',
+  language ='&language=es-la',
   movie = '/search/movie',
   query = '&query=',
-  page = '&page='
+  page = '&page=1',
+  adultContent ='&include_adult=false'
 }
 
 @Injectable({
@@ -22,21 +23,18 @@ export class FindMovieService {
     this.http = http;
   }
 
-  findMovie(page: number, query: string){
-    const url = this.URL + endpoint.movie + this.api_key + endpoint.language + endpoint.query + query + endpoint.page + page.toString() + endpoint.callback;
-    let movie = this.http.jsonp(url, "");
-    return movie.pipe(map((data: any) => data.results));
-
-    /*
-    let promise = new Promise<Array<Movie>>((resolve, reject) => {
-      datos.toPromise()
-       .then( (response) => {
-          resolve(response as Array<Movie>)
-       }, (error) => {
-           reject(error);
-       })
-    }
-    );
-    return promise; */
+  findMovie(query: string){
+    return new Promise<MovieResponse>((resolve, reject) => {
+      this.http.get(this.URL + endpoint.movie + this.api_key + endpoint.language 
+                    + endpoint.query + query + endpoint.page + endpoint.adultContent)
+      .toPromise()
+      .then( (response) => {
+        resolve(response as MovieResponse)
+        
+      }, (error) => {
+        reject(error);
+      })
+    })
   }
+
 }

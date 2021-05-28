@@ -1,12 +1,11 @@
 .body{
-    height: 100vh;
     width: 100%;
     padding-top: 100px;
 }
 
 .container{
     width: 600px;
-    height: 600px;
+    margin-bottom: 100px;
     background-color: var(--color-tertiary);
     border-radius: 10px;
     box-shadow: 0px 0px 11px 5px rgba(0,0,0,0.1);
@@ -29,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .submit-group{

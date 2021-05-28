@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar__all disabled" #searchMobile>
 
-  <a class="header__link-logo" href="#">
+  <a class="header__link-logo" href="/">
     <img
       class="header__logo"
       src="assets/images/logo-primary-complete.svg"
@@ -9,14 +9,25 @@
     />
   </a>
   <div class="search-bar" #searchMobile>
-    <input #input class="search-bar__input" type="text" name="movie" id="movie" />
+    <input #input class="search-bar__input" type="text" name="movie" id="movie" (keyup)="onUserType()" />
     <label class="search-bar__label" for="movie">
       <svg class="feather search-bar__icon">
         <use xlink:href="assets/images/icons/feather-sprite.svg#search"/>
       </svg>
     </label>
   </div>
-  <a class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  <a *ngIf="!isLogged; else elseBlock" class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  <ng-template #elseBlock>
+  <div class="profile m-rigth-big">
+    <svg class="feather profile__icon" (click)="activeMenu()">
+      <use xlink:href="assets/images/icons/feather-sprite.svg#user"/>
+    </svg>
+    <div class="profile__menu profile__menu--visible" #profileMenu>
+      <a href="#" class="profile__link">Ver lista de favoritos</a>
+      <a href="#" class="profile__link">Cerrar sesión</a>
+    </div>
+  </div>
+  </ng-template>
   </div>
 
   <div class="navbar__min">

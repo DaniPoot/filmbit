@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FindRoutingModule } from './find.routing.module';
+import { FormsModule } from '@angular/forms';
+import { SearchRoutingModule } from './search.routing.module'
 import { MoviesFoundComponent } from './movies-found/movies-found.component';
 
 
@@ -10,7 +11,11 @@ import { MoviesFoundComponent } from './movies-found/movies-found.component';
   ],
   imports: [
     CommonModule,
-    FindRoutingModule
+    SearchRoutingModule,
+    FormsModule
+  ],
+  exports: [
+    MoviesFoundComponent
   ]
 })
-export class FindModule { }
+export class SearchModule { }
