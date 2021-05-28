@@ -1,8 +1,24 @@
-.container{
+.body{
     height: 100vh;
-    width: 60%;
-    background-color: var(--color-tertiary);
+    width: 100%;
     padding-top: 100px;
+}
+
+.container{
+    width: 600px;
+    height: 600px;
+    background-color: var(--color-tertiary);
+    border-radius: 10px;
+    box-shadow: 0px 0px 11px 5px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 0px 11px 5px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 11px 5px rgba(0,0,0,0.1);
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .btn-login{
@@ -10,8 +26,13 @@
 }
 
 .register{
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.submit-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
