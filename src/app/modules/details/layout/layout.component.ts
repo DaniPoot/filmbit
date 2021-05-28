@@ -12,7 +12,7 @@ import { MovieService } from 'src/app/core/services/movie/movie.service';
 export class LayoutComponent implements OnInit {
 
   movie: Movie;
-  
+
   constructor(private router: ActivatedRoute, private movieService: MovieService) { 
     this.movie = new Movie(0,  "" , "", "");
   }
@@ -29,7 +29,6 @@ export class LayoutComponent implements OnInit {
     this.movieService.getDetails(id).then(
       response => {
         this.movie = response as Movie
-        console.log(this.movie);
         
       },error=>console.error(error) 
     )

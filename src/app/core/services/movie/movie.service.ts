@@ -12,7 +12,7 @@ const enum endpoint{
   by_genre ='/discover/movie',
   movie = '/movie/',
   similar = '/similar/',
-  reviews = '/reviews/',
+  reviews = '/reviews',
   with_genre = '&with_genres=',
   language ='&language=es',
   sort_by = '&sort_by=',
