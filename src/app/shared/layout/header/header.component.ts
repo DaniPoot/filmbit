@@ -49,12 +49,16 @@ export class HeaderComponent implements OnInit {
 
   onUserType(){
     const input = this.input?.nativeElement;
+    this.search.query$.emit(input.value)
     if(input.value != ''){
-      this.search.query$.emit(input.value)
       this.render.addClass(input, 'search-bar__input--active')
     }else{
       this.render.removeClass(input, 'search-bar__input--active')
     }
+  }
+
+  onUserSearching(event : any){
+    this.search.isSearching$.emit(true)
   }
 
 }

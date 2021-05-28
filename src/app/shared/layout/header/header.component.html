@@ -9,7 +9,7 @@
     />
   </a>
   <div class="search-bar" #searchMobile>
-    <input #input class="search-bar__input" type="text" name="movie" id="movie" (keyup)="onUserType()" />
+    <input #input class="search-bar__input" type="text" name="movie" id="movie" (keyup)="onUserType()" (focus)="onUserSearching($event)"/>
     <label class="search-bar__label" for="movie">
       <svg class="feather search-bar__icon">
         <use xlink:href="assets/images/icons/feather-sprite.svg#search"/>
