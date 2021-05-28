@@ -46,6 +46,26 @@ body{
   filter: drop-shadow(4px 4px 8px rgba(0, 230, 118, 0.70));
 }
 
+.btn-outline, .btn-outline:focus, .btn-outline:hover{
+  font-size: 14px;
+  background: none;
+  min-width: auto;
+  color: var(--color-primary);
+}
+
+.form-control{
+  color: var(--color-grey);
+  background-color: var(--color-tertiary);
+  border: 1px solid var(--color-grey);
+}
+.form-control:focus{
+  color: var(--color-grey);
+  background-color: var(--color-tertiary);
+  border-color: var(--color-primary);
+  box-shadow: 4px 4px 8px rgba(0, 230, 118, 0.25);
+
+}
+
 .carousel-indicators li {
   opacity: 1!important;
   background-color: var(--color-tertiary)!important;

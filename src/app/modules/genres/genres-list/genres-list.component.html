@@ -1,0 +1,8 @@
+<div class="container-grid" *ngIf="movies.length>0">
+  <div class="genre-movie" *ngFor="let movie of movies">
+      <img *ngIf="movie.poster_path" class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+movie.poster_path" alt="">
+      <div class="hover-filter">
+          <p class="movie-title">{{movie.title}}</p>
+      </div>
+  </div>
+</div>

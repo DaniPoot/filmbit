@@ -12,8 +12,8 @@ export class LayoutComponent implements OnInit {
   constructor(private search: SearchMoviesService) { }
 
   ngOnInit(): void {
-    this.search.query$.subscribe((value) => {
-      this.userIsSearch = value.length > 0  
+    this.search.isSearching$.subscribe((value) => {
+      this.userIsSearch = value
     })
   }
 

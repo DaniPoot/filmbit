@@ -30,12 +30,12 @@ export class MoviesFoundComponent implements OnInit {
       
     )
 
-    this.search.query$.subscribe( (value) => this.onKeyupEvent(value))
+    this.search.query$.subscribe( (value) => this.onQueryChange(value))
   
   }
 
-  onKeyupEvent(value: string){
-    this.query= value;
+  onQueryChange(value: string){
+    this.query = value;
     if(value.length >= 3){
       this.findMovieService.findMovie(value).then(
         response => { this.movies = response.results as Movie[]
