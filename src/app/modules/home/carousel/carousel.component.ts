@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from '../../../core/classes/movie/movie';
 import { MovieService } from '../../../core/services/movie/movie.service';
@@ -12,7 +13,7 @@ import { MovieService } from '../../../core/services/movie/movie.service';
 })
 export class CarouselComponent {
   movies: Array<Movie>
-  constructor(config: NgbCarouselConfig, private movieService: MovieService) {
+  constructor(config: NgbCarouselConfig, private movieService: MovieService, private router: Router) {
     this.movies= [];
     config.showNavigationArrows = false;
     config.showNavigationIndicators = true;
@@ -30,7 +31,7 @@ export class CarouselComponent {
   }
 
   seeDetails(movieId: number){
-    alert("redirect to "+ movieId+ " details.")
+    this.router.navigate(['/details/'+ movieId]);
   }
 
 

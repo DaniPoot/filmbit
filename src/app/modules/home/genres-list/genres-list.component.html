@@ -8,7 +8,7 @@
         </button>
         <h2 class="genre-name">{{genre.name}}</h2>
         <div class="genre-movies">  
-            <div class="genre-movie" *ngFor="let movie of genre.movies">
+            <div class="genre-movie" *ngFor="let movie of genre.movies" (click)="seeDetails(movie.id)">
                 <img class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+movie.poster_path" alt="Movie poster">
                 <div class="hover-filter">
                     <p class="movie-title">{{movie.title}}</p>

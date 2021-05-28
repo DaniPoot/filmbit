@@ -8,7 +8,7 @@
 </div>
 
 <div class="container-grid" *ngIf="movies.length>0; else elseBlock">
-    <div class="genre-movie" *ngFor="let movie of movies">
+    <div class="genre-movie" *ngFor="let movie of movies" (click)="seeDetails(movie.id)">
         <img *ngIf="movie.poster_path" class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+movie.poster_path" alt="">
         <div class="hover-filter">
             <p class="movie-title">{{movie.title}}</p>

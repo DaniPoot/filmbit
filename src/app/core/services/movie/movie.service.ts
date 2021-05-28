@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { MovieResponse } from '../../classes/movie/movie-response';
+import { Movie } from '../../classes/movie/movie';
+import { Cast } from '../../classes/cast/cast';
+import { CastResponse } from '../../classes/cast/cast-response';
+import { Review } from '../../classes/review/review';
+import { ReviewResponse } from '../../classes/review/review-response';
 
 const enum endpoint{
-  callback = '&callback=JSONP_CALLBACK',
   now_playing = '/movie/now_playing',
   by_genre ='/discover/movie',
+  movie = '/movie/',
+  similar = '/similar/',
+  reviews = '/reviews/',
   with_genre = '&with_genres=',
-  language ='&language=es-la',
+  language ='&language=es',
   sort_by = '&sort_by=',
   page = '&page='
 }
@@ -38,6 +44,50 @@ export class MovieService {
                           + endpoint.with_genre + genre.toString())
   }
 
+  getSimilar(id: number){
+    return this.getMovies(this.URL + endpoint.movie + id 
+                          + endpoint.similar + this.api_key + endpoint.language)
+  }
+
+  getDetails(id: number){
+    return new Promise<Movie>((resolve, reject) => {
+      this.http.get(this.URL + endpoint.movie + id
+                    + this.api_key + endpoint.language)
+      .toPromise()
+      .then( (response) => {
+        resolve(response as Movie)
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
+  getCast(id: number){
+    return new Promise<Cast[]>((resolve, reject) => {
+      this.http.get(this.URL+ endpoint.movie + id + this.api_key + endpoint.language)
+      .toPromise()
+      .then( (response) => {
+        resolve((response as CastResponse).cast as Cast[])
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
+  getReviews(id: number){
+    return new Promise<Review[]>((resolve, reject) => {
+      this.http.get(this.URL+ endpoint.movie + id + endpoint.reviews + 
+                    this.api_key+endpoint.language)
+      .toPromise()
+      .then( (response) => {
+        resolve((response as ReviewResponse).results as Review[])
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
+
   private getMovies(url: string){
     return new Promise<MovieResponse>((resolve, reject) => {
       this.http.get(url)
@@ -49,4 +99,7 @@ export class MovieService {
       })
     })
   }
+
+
+
 }

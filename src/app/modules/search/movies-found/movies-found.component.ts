@@ -1,5 +1,6 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Genre } from 'src/app/core/classes/genre/genre';
 import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
 import { Movie } from '../../../core/classes/movie/movie';
@@ -16,7 +17,8 @@ export class MoviesFoundComponent implements OnInit {
   movies: Array<Movie> = [ ];
   query: string="";
   genres: Array<Genre> = [ ];
-  constructor(private findMovieService: FindMovieService, private genresService: GenresService, private search: SearchMoviesService) {
+  constructor(private findMovieService: FindMovieService, private router: Router,
+    private genresService: GenresService, private search: SearchMoviesService) {
 
   }
 
@@ -42,5 +44,9 @@ export class MoviesFoundComponent implements OnInit {
     }else{
       this.movies=[];
     }
+  }
+
+  seeDetails(movieId: number){
+    this.router.navigate(['/details/'+ movieId]);
   }
 }

@@ -3,6 +3,7 @@ import { Genre } from '../../../core/classes/genre/genre';
 import { Movie } from '../../../core/classes/movie/movie';
 import { GenresService } from '../../../core/services/genres/genres.service';
 import { MovieService } from 'src/app/core/services/movie/movie.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-genres-list',
   templateUrl: './genres-list.component.html',
@@ -19,7 +20,7 @@ export class GenresListComponent implements OnInit {
   currentPage: number=-1;
 
   constructor(private genreService: GenresService, 
-              private movieService: MovieService) { 
+              private movieService: MovieService, private router: Router) { 
 
   }
 
@@ -70,6 +71,10 @@ export class GenresListComponent implements OnInit {
   changeGenrePage(pageGenreNavigation: number, genre: Genre){
     genre.page+= pageGenreNavigation;
     this.getMoviesByGenre(genre);
+  }
+
+  seeDetails(movieId: number){
+    this.router.navigate(['/details/'+ movieId]);
   }
 
 }

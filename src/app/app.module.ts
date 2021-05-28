@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { SearchModule } from './modules/search/search.module';
+import { DetailsModule } from './modules/details/details.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent, FooterComponent } from './shared/index';
 
@@ -19,6 +20,7 @@ import { HeaderComponent, FooterComponent } from './shared/index';
     HttpClientModule,
     HomeModule,
     SearchModule,
+    DetailsModule,
     AppRoutingModule,
     NgbModule,
   ],
