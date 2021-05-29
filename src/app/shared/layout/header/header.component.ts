@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogged = Boolean(localStorage.getItem('isLogged'));
-    this.isLogged = true
   }
 
   activeBar(): void{
@@ -59,6 +58,10 @@ export class HeaderComponent implements OnInit {
 
   onUserSearching(event : any){
     this.search.isSearching$.emit(true)
+  }
+
+  loggedOut(){
+    localStorage.setItem('isLogged', String(false));
   }
 
 }
