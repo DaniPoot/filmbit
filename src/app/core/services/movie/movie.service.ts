@@ -11,7 +11,8 @@ const enum endpoint{
   now_playing = '/movie/now_playing',
   by_genre ='/discover/movie',
   movie = '/movie/',
-  similar = '/similar/',
+  similar = '/similar',
+  credits = '/credits',
   reviews = '/reviews',
   with_genre = '&with_genres=',
   language ='&language=es',
@@ -64,9 +65,10 @@ export class MovieService {
 
   getCast(id: number){
     return new Promise<Cast[]>((resolve, reject) => {
-      this.http.get(this.URL+ endpoint.movie + id + this.api_key + endpoint.language)
+      this.http.get(this.URL+ endpoint.movie + id + endpoint.credits 
+        + this.api_key + endpoint.language)
       .toPromise()
-      .then( (response) => {
+      .then( (response) => {        
         resolve((response as CastResponse).cast as Cast[])
       }, (error) => {
         reject(error);

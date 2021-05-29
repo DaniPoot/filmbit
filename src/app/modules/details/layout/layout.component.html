@@ -16,5 +16,20 @@
     </div>
 </div>
 <div>
-<app-reviews></app-reviews>
+<div class="tabs">
+    <div class="tab selected" (click)="changeTab('Info', 'Reviews')" id="tabInfo">Información</div>
+    <div class="tab" (click)="changeTab('Reviews', 'Info')" id="tabReviews">Reseñas</div>
+</div>
+
+<div class="tab-content tab-showed" id="tabContentInfo">
+    <app-information [id]="id" [productionCompanies]="movie.production_companies"></app-information>
+</div>
+
+<div class="tab-content" id="tabContentReviews">
+    <app-reviews></app-reviews>
+</div>
+
+
+
+
 </div>

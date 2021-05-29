@@ -88,6 +88,37 @@
 
 .movie-overview{
     margin: 25px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.tabs{
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tab{
+    font: var(--text-subtitle);
+    margin: 0 1em;
+    cursor: pointer;
+}
+
+.selected{
+    border-bottom: solid 2px var(--color-primary);
+}
+
+.tab-content{
+    display: none;
+}
+
+.tab-showed{
+    display: initial;
 }
 
 @media (max-width: 768px) { 
@@ -164,5 +195,9 @@
 
     .btn-add{
         margin-top: 30px;
+    }
+
+    .tab{
+        font: var(--text-mobile-subtitle);
     }
 }

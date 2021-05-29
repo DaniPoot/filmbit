@@ -12,7 +12,8 @@ export class GenresListComponent implements OnInit {
 
   public movies: Array<Movie> = [ ];
 
-  constructor(private activatedRouter : ActivatedRoute, private movieServices : MovieService) { }
+  constructor(private activatedRouter : ActivatedRoute, private router : Router,
+    private movieServices : MovieService) { }
 
   async ngOnInit(): Promise<void> {
     console.log(this.activatedRouter.snapshot.params.id)
@@ -23,6 +24,10 @@ export class GenresListComponent implements OnInit {
       console.log(error);
     }
 
+  }
+
+  seeDetails(movieId: number){
+    this.router.navigate(['/details/'+ movieId]);
   }
 
 }
