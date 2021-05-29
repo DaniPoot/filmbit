@@ -1,4 +1,4 @@
-<div class="container-grid" *ngIf="query.length<3">
+<div class="container-grid" *ngIf="query.length==0">
     <div class="genre" *ngFor="let genre of genres">
         <a [href]="'/genres/' + genre.id" class="genre__link">
         <div class="name-container">

@@ -16,7 +16,7 @@
       </svg>
     </label>
   </div>
-  <a *ngIf="!isLogged; else elseBlock" class="btn m-rigth-big" href="#">Iniciar Sesion</a>
+  <a *ngIf="!isLogged; else elseBlock" class="btn m-rigth-big" href="/login">Iniciar Sesion</a>
   <ng-template #elseBlock>
   <div class="profile m-rigth-big">
     <svg class="feather profile__icon" (click)="activeMenu()">
@@ -24,9 +24,8 @@
     </svg>
     <div class="profile__menu profile__menu--visible" #profileMenu>
       <a href="#" class="profile__link">Ver lista de favoritos</a>
-      <a href="#" class="profile__link">Cerrar sesión</a>
-    </div>
-  </div>
+      <a href="/" class="profile__link" (click)="loggedOut()">Cerrar sesión</a>
+    <div>
   </ng-template>
   </div>
 

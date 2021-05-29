@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginRoutingModule } from './login.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchModule } from '../search/search.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SearchModule
   ]
 })
 export class LoginModule { }

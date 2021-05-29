@@ -9,10 +9,11 @@ import { RegisterModule } from './modules/register/register.module';
 import { SearchModule } from './modules/search/search.module';
 import { DetailsModule } from './modules/details/details.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './shared/index';
+import { FooterComponent, HeaderComponent} from './shared/index';
 
 @NgModule({
   declarations: [
+    HeaderComponent,
     AppComponent,
     FooterComponent,
   ],
