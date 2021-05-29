@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Movie } from 'src/app/core/classes/movie/movie';
 import { MovieService } from 'src/app/core/services/movie/movie.service';
+import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
 
 @Component({
   selector: 'app-layout',
@@ -12,18 +13,29 @@ export class LayoutComponent implements OnInit {
 
   movie: Movie;
   id: number;
+  public userIsSearch: boolean = false;
 
-  constructor(private router: ActivatedRoute, private movieService: MovieService) { 
+  constructor(private router: ActivatedRoute, private movieService: MovieService,
+    private search: SearchMoviesService) { 
     this.movie = new Movie(0,  "" , "", "");
     this.id=0;
   }
 
   ngOnInit(): void {
+    console.log("niti");
+    
+    this.search.isSearching$.subscribe((value) => {
+      this.userIsSearch = value
+    })
 
     this.router.paramMap.subscribe( (params: ParamMap) => { 
       this.id = Number(params.get("id"));
       this.getMovie();
+      this.userIsSearch=false;
+      
     });
+  
+    
   }
 
   getMovie(){

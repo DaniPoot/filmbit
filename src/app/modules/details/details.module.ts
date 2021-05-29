@@ -4,16 +4,20 @@ import { LayoutComponent } from './layout/layout.component';
 import { DetailsRoutingModule } from './details.routing.module';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { InformationComponent } from './information/information.component';
+import { AuthorAvatarPipe } from './reviews/author-avatar.pipe';
+import { SearchModule } from '../search/search.module';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     ReviewsComponent,
-    InformationComponent
+    InformationComponent,
+    AuthorAvatarPipe
   ],
   imports: [
     CommonModule,
-    DetailsRoutingModule
+    DetailsRoutingModule,
+    SearchModule,
   ]
 })
 export class DetailsModule { }

@@ -1,5 +1,6 @@
-<div class="body">
 
+
+<div class="body" *ngIf="!userIsSearch; else elseBlock">
     <div class="container">
         <div class="img-container row pt-3">
             <img src="../../../../assets/images/logo-secondary-complete.svg" alt="">  
@@ -51,9 +52,10 @@
                 <small id="emailHelp" class="form-text text-muted col-md-6 col-lg-6 col-sm-12 text-center">¿Ya tienes cuenta?</small>
                 <a type="submit" class="btn btn-outline col-md-6 col-lg-6 col-sm-12 text-center" href="/login">Inicia sesión aquí</a>
             </div>
-
         </form>
-
-
     </div>
 </div>
+
+<ng-template #elseBlock>
+    <app-movies-found></app-movies-found>
+</ng-template>

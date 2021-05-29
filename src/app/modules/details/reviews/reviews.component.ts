@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Movie } from 'src/app/core/classes/movie/movie';
 import { MovieService } from 'src/app/core/services/movie/movie.service';
 import { Review } from '../../../core/classes/review/review';
 
@@ -9,18 +11,22 @@ import { Review } from '../../../core/classes/review/review';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
-
-  constructor(private movieService: MovieService) { }
+  reviews: Review[];
+  constructor(private router: ActivatedRoute, private movieService: MovieService) {
+    this.reviews = [];
+  }
 
   ngOnInit(): void {
-    this.getReviews(24428)
+    this.router.paramMap.subscribe( (params: ParamMap) => { 
+      const id = Number(params.get("id"));
+      this.getReviews(id);
+    });
   }
 
   getReviews(id: number){
     this.movieService.getReviews(id).then(
       response => {
-        console.log(response as Review[]);
-        
+        this.reviews = response as Review[];
       },
       error => console.error(error)
       

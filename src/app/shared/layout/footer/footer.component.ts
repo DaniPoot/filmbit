@@ -14,4 +14,8 @@ export class FooterComponent implements OnInit {
     this.isLogged = Boolean(localStorage.getItem('isLogged'));
   }
 
+  loggedOut(){
+    localStorage.setItem('isLogged', String(false));
+  }
+
 }
