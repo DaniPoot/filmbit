@@ -1,11 +1,14 @@
+import { AuthorDetails } from "./author-details";
+
 export class Review{
     author: string;
-    avatar_path: string;
+    author_details: AuthorDetails;
     content: string;
 
-    constructor(author: string, avatar: string, content: string){
+
+    constructor(author: string, content: string, details: AuthorDetails){
         this.author = author;
-        this.avatar_path = avatar;
+        this.author_details = details;
         this.content = content;
     }
 }
