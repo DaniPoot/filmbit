@@ -18,7 +18,6 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.router.paramMap.subscribe( (params: ParamMap) => { 
       const id = Number(params.get("id"));
       this.getMovie(id);
