@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenresListComponent } from './genres-list/genres-list.component';
+import { SearchModule } from '../search/search.module';
 
 @NgModule({
   declarations: [
     GenresListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SearchModule
   ],
   exports: [
     GenresListComponent

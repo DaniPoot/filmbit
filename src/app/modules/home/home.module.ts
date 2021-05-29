@@ -6,13 +6,10 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GenresListComponent } from './genres-list/genres-list.component';
 import { SearchModule } from '../search/search.module';
-import { HeaderComponent } from '../../shared/index';
-
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    HeaderComponent,
     CarouselComponent,
     GenresListComponent,
   ],
