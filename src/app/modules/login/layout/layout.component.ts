@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {LoginService} from 'src/app/core/services/login/login.service';
 import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LayoutComponent implements OnInit {
   submitted = false;
   public userIsSearch: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService, private login: LoginService) { }
   ngOnInit() {
     this.search.isSearching$.subscribe((value) => {
       this.userIsSearch = value
@@ -33,6 +34,7 @@ export class LayoutComponent implements OnInit {
       return;
     }
     localStorage.setItem('isLogged', "true");
+    this.login.isLogged$.emit(true)
     this.router.navigate(['/']);
   }
 }

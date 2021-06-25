@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {LoginService} from 'src/app/core/services/login/login.service';
 import {SearchMoviesService} from 'src/app/core/services/shearchMovies/search-movies.service';
 
 @Component({
@@ -15,11 +16,14 @@ export class HeaderComponent implements OnInit {
   isLogged: Boolean = false;
 
 
-  constructor(private render: Renderer2, public search: SearchMoviesService) { }
+  constructor(private render: Renderer2, public search: SearchMoviesService, public login: LoginService) { }
 
   ngOnInit(): void {
     this.isLogged = localStorage.getItem('isLogged')=="true";
-    
+
+    this.login.isLogged$.subscribe( (value) => {
+      this.isLogged = value;
+    })
   }
 
   activeBar(): void{
@@ -63,6 +67,7 @@ export class HeaderComponent implements OnInit {
 
   loggedOut(){
     localStorage.setItem('isLogged', String(false));
+    this.login.isLogged$.emit(false)
   }
 
 }
