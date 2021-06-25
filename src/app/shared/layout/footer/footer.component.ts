@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
   constructor(public login: LoginService) { }
 
   ngOnInit(): void {
-    this.isLogged = Boolean(localStorage.getItem('isLogged'));
+    this.isLogged = localStorage.getItem('isLogged') == "true";
     this.login.isLogged$.subscribe( (value) => {
       this.isLogged = value;
     })
