@@ -10,6 +10,7 @@ import { SearchModule } from './modules/search/search.module';
 import { DetailsModule } from './modules/details/details.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent, HeaderComponent} from './shared/index';
+import {FavoritesModule} from './modules/favorites/favorites.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FooterComponent, HeaderComponent} from './shared/index';
     DetailsModule,
     AppRoutingModule,
     NgbModule,
+    FavoritesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
