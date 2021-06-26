@@ -1,0 +1,12 @@
+<div class="favorites-list" *ngIf="favoritesMoviesList.length>0; else elseBlock">
+	<div class="genre-movie" *ngFor="let favorite of favoritesMoviesList" (click)="seeDetails(favorite.id)">
+		<img *ngIf="favorite.poster_path" class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300'+favorite.poster_path" alt="">
+    <div class="hover-filter">
+			<p class="movie-title">{{favorite.title}}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+<p>Añade peliculas para poder verla aquí!!</p>
+</ng-template>

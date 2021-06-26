@@ -1,0 +1,9 @@
+.favorites-container {
+  margin-top: 15vh;
+  text-align: center;
+}
+
+.favorites-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
