@@ -1,38 +1,13 @@
-.container{
-    height: auto;
-    width: 100%;
-    padding-top: 100px;
+.container {
+  height: auto;
+  width: 100%;
+  padding-top: 100px;
 }
 
-.review-list{
-    width: 100%;
+.review-item {
+  background-color: var(--color-tertiary);
+  padding: 30px;
+  border-radius: 10px;
+  list-style: none;
 }
 
-.review-item{
-    background-color: var(--color-tertiary);
-    padding: 30px;
-    border-radius: 10px;
-    list-style: none;
-    
-}
-
-.review-author{
-    display: flex;
-    margin-bottom: 30px;
-    align-items: center;
-}
-
-.review-img{
-    max-width: 70px;
-    max-height: 70px;
-    border-radius: 50%;
-}
-
-.review-name{
-    font: var(--text-mobile-subtitle);
-    margin-left: 20px;
-}
-
-.review-description{
-    font-size: 14px;
-}
