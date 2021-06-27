@@ -1,0 +1,5 @@
+<div class="review-author">
+	<img class="review-img" [src]="review.author_details.avatar_path | authorAvatar" alt="">
+	<div class="review-name">{{review.author}}</div>
+</div>
+<div class="review-description mb-3">{{review.content}}</div>
