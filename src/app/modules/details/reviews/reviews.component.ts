@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Movie } from 'src/app/core/classes/movie/movie';
 import { MovieService } from 'src/app/core/services/movie/movie.service';
 import { Review } from '../../../core/classes/review/review';
 
