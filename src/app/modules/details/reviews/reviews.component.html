@@ -1,12 +1,9 @@
 <div class="container">
     <div class="row">
-        <ul class="review-list justify-content-center">
+        <app-review-form class="col"></app-review-form>
+        <ul class="review-list justify-content-center col">
         <li class="review-item col-12 mb-5" *ngFor="let review of reviews">
-            <div class="review-author">
-                <img class="review-img" [src]="review.author_details.avatar_path | authorAvatar" alt="">
-                <div class="review-name">{{review.author}}</div>
-            </div>
-            <div class="review-description mb-3">{{review.content}}</div>
+            <app-review [review]=review> </app-review>
         </li>
         </ul>
     </div>
