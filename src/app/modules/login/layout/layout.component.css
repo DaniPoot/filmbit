@@ -36,3 +36,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.authenticated{
+    text-align: center;
+    display: none;
+    margin-bottom: 5px;
+    color: var(--danger);
+}
+
+.failed{
+    display: block;
+}

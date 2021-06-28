@@ -25,7 +25,7 @@ export class LoginService implements CanActivate {
   login (email: string, password: string) {
     const url = this.URL;
     const body = { email, password }
-
+    
     return new Promise( (resolve, reject) => {
       this.http.post(url, body)
       .toPromise().then(response => {

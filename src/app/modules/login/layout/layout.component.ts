@@ -13,6 +13,7 @@ import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-
 export class LayoutComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
+  authenticated = true;
   public userIsSearch: boolean = false;
   private loginService: LoginService;
 
@@ -33,21 +34,25 @@ export class LayoutComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
     }
 
     const { email, password } = this.registerForm.value
-    const response = this.loginService.login(email, password)
-    response.then(value => {
-      const user = value as ResponseAPI
-      localStorage.setItem('isLogged', "true");
-      localStorage.setItem('token', user.token);
-      localStorage.setItem('user', JSON.stringify(user.user));
-      this.login.isLogged$.emit(true)
-      this.router.navigate(['/']);
-    })
-    
+    this.loginService.login(email, password).then(
+      value => {
+        const user = value as ResponseAPI
+        this.authenticated =true;
+        localStorage.setItem('isLogged', "true");
+        localStorage.setItem('token', user.token);
+        localStorage.setItem('user', JSON.stringify(user.user));
+        this.login.isLogged$.emit(true)
+        this.router.navigate(['/']);
+      },error =>{
+        this.authenticated =false;
+      }
+    )
   }
 }
