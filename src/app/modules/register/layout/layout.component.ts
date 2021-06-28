@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {LoginService} from 'src/app/core/services/login/login.service';
 import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
 
 @Component({
@@ -12,8 +13,11 @@ export class LayoutComponent{
   registerForm!: FormGroup;
   submitted = false;
   public userIsSearch: boolean = false
+  private loginService: LoginService;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService, private login : LoginService) {
+    this.loginService = login
+  }
 
   ngOnInit() {
     this.search.isSearching$.subscribe((value) => {
@@ -37,7 +41,14 @@ export class LayoutComponent{
       if (this.registerForm.invalid) {
         return;
       }
-      this.router.navigate(['/login']);
+
+      const { firstName: name, email, password } = this.registerForm.value
+
+      const response = this.loginService.createUser(name, email, password)
+      response.then(value => {
+        this.router.navigate(['/login']);
+      })
+
   }
 
   checkPasswords(group: FormGroup) {

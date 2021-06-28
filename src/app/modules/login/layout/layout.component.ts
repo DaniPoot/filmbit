@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {ResponseAPI} from 'src/app/core/classes/user-api/response-api';
 import {LoginService} from 'src/app/core/services/login/login.service';
 import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
 
@@ -12,9 +13,12 @@ import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-
 export class LayoutComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
-  public userIsSearch: boolean = false
+  public userIsSearch: boolean = false;
+  private loginService: LoginService;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService, private login: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private search: SearchMoviesService, private login: LoginService) {
+    this.loginService = login;
+  }
   ngOnInit() {
     this.search.isSearching$.subscribe((value) => {
       this.userIsSearch = value
@@ -33,8 +37,17 @@ export class LayoutComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    localStorage.setItem('isLogged', "true");
-    this.login.isLogged$.emit(true)
-    this.router.navigate(['/']);
+
+    const { email, password } = this.registerForm.value
+    const response = this.loginService.login(email, password)
+    response.then(value => {
+      const user = value as ResponseAPI
+      localStorage.setItem('isLogged', "true");
+      localStorage.setItem('token', user.token);
+      localStorage.setItem('user', JSON.stringify(user.user));
+      this.login.isLogged$.emit(true)
+      this.router.navigate(['/']);
+    })
+    
   }
 }
