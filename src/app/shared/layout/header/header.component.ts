@@ -66,8 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   loggedOut(){
-    localStorage.setItem('isLogged', String(false));
-    this.login.isLogged$.emit(false)
+    this.login.logout()
   }
 
 }
