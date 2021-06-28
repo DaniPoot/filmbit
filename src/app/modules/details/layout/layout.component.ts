@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Movie } from 'src/app/core/classes/movie/movie';
+import { FavoritesService } from 'src/app/core/services/favorites/favorites.service';
 import { MovieService } from 'src/app/core/services/movie/movie.service';
 import { SearchMoviesService } from 'src/app/core/services/shearchMovies/search-movies.service';
+
+
 
 @Component({
   selector: 'app-layout',
@@ -14,15 +17,15 @@ export class LayoutComponent implements OnInit {
   movie: Movie;
   id: number;
   public userIsSearch: boolean = false;
+  isFavorite: Boolean = true;
 
   constructor(private router: ActivatedRoute, private movieService: MovieService,
-    private search: SearchMoviesService) { 
+    private search: SearchMoviesService, private favoriteService: FavoritesService) { 
     this.movie = new Movie(0,  "" , "", "");
     this.id=0;
   }
 
   ngOnInit(): void {
-    console.log("niti");
     
     this.search.isSearching$.subscribe((value) => {
       this.userIsSearch = value
@@ -31,11 +34,9 @@ export class LayoutComponent implements OnInit {
     this.router.paramMap.subscribe( (params: ParamMap) => { 
       this.id = Number(params.get("id"));
       this.getMovie();
+      this.getIsFavorite();
       this.userIsSearch=false;
-      
-    });
-  
-    
+    }); 
   }
 
   getMovie(){
@@ -44,6 +45,13 @@ export class LayoutComponent implements OnInit {
         this.movie = response as Movie
         
       },error=>console.error(error) 
+    )
+  }
+
+  getIsFavorite(){
+    this.favoriteService.isFavorite(this.id).then(
+      response => this.isFavorite = response,
+      error => console.error(error) 
     )
   }
 
@@ -59,5 +67,23 @@ export class LayoutComponent implements OnInit {
     if(tabFade) tabFade.className="tab"
     if(contentFade) contentFade.className="tab-content"
   
+  }
+
+  toggleFavorites(id: number){
+    if(this.isFavorite){
+      this.favoriteService.removeFavorite(this.id).then(
+        response => {
+          this.isFavorite= false;
+        },
+        error => console.error(error)
+      )
+    }else{
+      this.favoriteService.addFavorite(this.id).then(
+        response => {
+          this.isFavorite= true;
+        },
+        error => console.error(error)
+      )
+    }
   }
 }

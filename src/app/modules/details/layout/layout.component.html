@@ -14,6 +14,7 @@
                 <hr class="divider">
                 <p class="movie-overview">{{movie.overview}}</p>
             </div>
+            <button class="btn btn-fav" (click)="toggleFavorites(movie.id)" >{{isFavorite?'Quitar de favoritos': 'Añadir a favoritos' }}</button>
         </div>
     </div>
     <div class="tabs">

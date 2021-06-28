@@ -23,12 +23,11 @@ export class GenresListComponent implements OnInit {
       this.userIsSearch = value
     })
 
-    console.log(this.activatedRouter.snapshot.params.id)
     try {
       const movies = await this.movieServices.getByGenre(1,this.activatedRouter.snapshot.params.id, 'revenue.desc')
       this.movies = movies.results as Movie[];
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
 
   }

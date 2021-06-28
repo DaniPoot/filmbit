@@ -4,15 +4,23 @@ export class User {
 	private _username: string;
 	private _image: string;
 	private _favoriteList: Movie[];
+	private _id: number;
+	
 
 	constructor(
+		id: number,
 		username: string,
 		image: string,
 		favoriteList: Movie[]
 	){
+		this._id=id;
 		this._username=username;
 		this._image=image;
 		this._favoriteList=favoriteList;
+	}
+
+	get id(){
+		return this._id;
 	}
 	
 	get username(){
@@ -26,10 +34,5 @@ export class User {
 	get favoriteList(){
         return this._favoriteList;
     }
-
-
-	addFavorite(movie: Movie): void {
-
-	}
 
 }
