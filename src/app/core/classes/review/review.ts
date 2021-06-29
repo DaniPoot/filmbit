@@ -12,3 +12,15 @@ export class Review{
         this.content = content;
     }
 }
+
+export class ReviewFilmbit{
+    id_user: number
+    id_movie: number
+    body: string
+
+    constructor(){
+        this.id_user=0
+        this.id_movie=0
+        this.body= ""
+    }
+}

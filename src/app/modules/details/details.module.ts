@@ -6,7 +6,6 @@ import { InformationComponent } from './information/information.component';
 import { AuthorAvatarPipe } from './reviews/author-avatar.pipe';
 import { SearchModule } from '../search/search.module';
 import { ReviewComponent } from './review/review.component';
-import { ReviewFormComponent } from './review-form/review-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -16,7 +15,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     InformationComponent,
     AuthorAvatarPipe,
     ReviewComponent,
-    ReviewFormComponent,
   ],
   imports: [
     CommonModule,

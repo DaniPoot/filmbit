@@ -1,7 +1,11 @@
 .container {
   height: auto;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 50px;
+}
+
+.form-review-container {
+  width: 50%;
 }
 
 .review-item {

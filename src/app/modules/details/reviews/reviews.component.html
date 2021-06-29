@@ -1,6 +1,24 @@
+<div class="container form-review-container">
+    <div class="text-center pt-3">
+        <h3>¡Agrega una nueva reseña!</h3>
+    </div>
+    <form class="form mt-5" [formGroup]="reviewForm" (ngSubmit)="onSubmit()" action="/">
+        <div class="form-group row ml-3 mr-3">
+            <label class="col-12" for="bodyReview"></label>
+                <textarea placeholder="Ingrese su reseña" formControlName="body" class="form-control col-12" id="bodyReview" aria-describedby="bodyHelp" [ngClass]="{ 'is-invalid': submitted && f.body.errors }" ></textarea>
+                <div *ngIf="submitted && f.body.errors" class="invalid-feedback">
+                    <div *ngIf="f.body.errors.required">Campo requerido</div>
+                </div>
+        </div>
+        <div class="row submit-group ml-3 mr-3">
+            <button type="submit" class="btn btn-primary btn-login col-12">Subir reseña</button>
+        </div>
+    </form>
+</div>
+
+
 <div class="container">
     <div class="row">
-        <app-review-form class="col"></app-review-form>
         <ul class="review-list justify-content-center col">
         <li class="review-item col-12 mb-5" *ngFor="let review of reviews">
             <app-review [review]=review> </app-review>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Favorite } from '../../classes/favorites/favorite';
+import { ReviewFilmbit } from '../../classes/review/review';
 import { User } from '../../classes/user/user';
 
 
@@ -9,8 +9,8 @@ import { User } from '../../classes/user/user';
   providedIn: 'root'
 })
 
-export class FavoritesService {
-  private URL = 'http://localhost:3000/favorites';
+export class ReviewsService {
+  private URL = 'http://localhost:3000/reviews';
   private token = localStorage.getItem('token');
   private user = JSON.parse(localStorage.getItem('user')||"{}") as User;
 
@@ -18,37 +18,9 @@ export class FavoritesService {
     this.http = http;
   }
 
-  getFavorites(){
-    return new Promise<Favorite[]>((resolve, reject) => {
-      this.http.get(this.URL + '/' + this.user.id, 
-        { headers:{'Authorization': 'Bearer '+ this.token} 
-      })
-      .toPromise()
-      .then( (response) => {
-        resolve(response as Favorite[])
-      }, (error) => {
-        reject(error);
-      })
-    })
-  }
-
-  isFavorite(id_movie: number){
-    return new Promise<Boolean>((resolve, reject) => {
-      this.http.get(this.URL + '/' + this.user.id + "/"+ id_movie, 
-        { headers:{'Authorization': 'Bearer '+ this.token} 
-      })
-      .toPromise()
-      .then( (response) => {
-        resolve(response? true: false)
-      }, (error) => {
-        reject(error);
-      })
-    })
-  }
-
-  addFavorite(id_movie: number){
-    return new Promise((resolve, reject) => {
-      this.http.post(this.URL, {'id_user': this.user.id , id_movie},
+  getPDF(){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.URL + '/PDF', 
         { headers:{'Authorization': 'Bearer '+ this.token} 
       })
       .toPromise()
@@ -60,14 +32,42 @@ export class FavoritesService {
     })
   }
 
-  removeFavorite(id_movie: number){
-    return new Promise((resolve, reject) => {
-      this.http.delete(this.URL +'/'+ this.user.id +'/'+ id_movie,
+  getCSV(){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.URL + '/CSV', 
         { headers:{'Authorization': 'Bearer '+ this.token} 
       })
       .toPromise()
       .then( (response) => {
         resolve(response)
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
+  addReview(id_movie: number, body: string){
+    return new Promise((resolve, reject) => {
+      this.http.post(this.URL, {'id_user': this.user.id , id_movie, body},
+        { headers:{'Authorization': 'Bearer '+ this.token} 
+      })
+      .toPromise()
+      .then( (response) => {
+        resolve(response)
+      }, (error) => {
+        reject(error);
+      })
+    })
+  }
+
+  getReviews(id_movie: number){
+    return new Promise<ReviewFilmbit[]>((resolve, reject)=>{
+      this.http.get(this.URL + '/'+ id_movie, 
+        { headers:{'Authorization': 'Bearer '+ this.token} 
+      })
+      .toPromise()
+      .then( (response) => {
+        resolve(response as ReviewFilmbit[])
       }, (error) => {
         reject(error);
       })
